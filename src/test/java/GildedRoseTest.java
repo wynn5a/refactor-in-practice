@@ -14,13 +14,16 @@ public class GildedRoseTest {
   @Test
   public void should_decrease_quality_and_sell_in_after_one_day() {
     Item a = new Item("a", 10, 10);
-    Item b = new Item("b", 9, 9);
-    GildedRose rose = new GildedRose(new Item[]{a, b});
+    Item b = new Item("b", 0, 0);
+    Item c = new Item("c", -1, -2);
+    GildedRose rose = new GildedRose(new Item[]{a, b, c});
     rose.updateQuality();
     assertEquals(9, a.quality);
     assertEquals(9, a.sellIn);
-    assertEquals(8, b.sellIn);
-    assertEquals(8, b.sellIn);
+    assertEquals(-1, b.sellIn);
+    assertEquals(0, b.quality);
+    assertEquals(-2, c.sellIn);
+    assertEquals(-2, c.quality);
   }
 
   @Test
@@ -46,13 +49,20 @@ public class GildedRoseTest {
 
   @Test
   public void quality_of_aged_brie_increase_with_day_passes(){
-    Item a = new Item("Aged Brie", 2, 10);
+    Item a = new Item("Aged Brie", 1, 10);
     GildedRose rose = new GildedRose(new Item[]{a});
 
     rose.updateQuality();
 
     assertEquals(11, a.quality);
-    assertEquals(1, a.sellIn);
+    assertEquals(0, a.sellIn);
+
+    rose.updateQuality();
+
+    assertEquals(12, a.quality);
+    assertEquals(-1, a.sellIn);
+
+
   }
 
 
