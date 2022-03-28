@@ -2,6 +2,9 @@ package io.github.wynn5a;
 
 public class Item {
 
+  public static final String BACKSTAGE_PASSES = "Backstage passes";
+  public static final String AGED_BRIE = "Aged Brie";
+  public static final String SULFURAS = "Sulfuras";
   public String name;
 
   public int sellIn;
@@ -24,7 +27,7 @@ public class Item {
   }
 
   public void decreaseQuality(int value) {
-    if (quality <= 0 || is("Sulfuras")) {
+    if (quality <= 0 || is(SULFURAS)) {
       return;
     }
     quality = quality - value;
@@ -37,7 +40,7 @@ public class Item {
   }
 
   public void decreaseSellIn(int value) {
-    if (is("Sulfuras")) {
+    if (is(SULFURAS)) {
       return;
     }
     sellIn = sellIn - value;

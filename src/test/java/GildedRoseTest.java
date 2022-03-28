@@ -1,3 +1,6 @@
+import static io.github.wynn5a.Item.AGED_BRIE;
+import static io.github.wynn5a.Item.BACKSTAGE_PASSES;
+import static io.github.wynn5a.Item.SULFURAS;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import io.github.wynn5a.GildedRose;
@@ -49,7 +52,7 @@ public class GildedRoseTest {
 
   @Test
   public void quality_of_aged_brie_increase_with_day_passes(){
-    Item a = new Item("Aged Brie", 1, 10);
+    Item a = new Item(AGED_BRIE, 1, 10);
     GildedRose rose = new GildedRose(new Item[]{a});
 
     rose.updateQuality();
@@ -68,7 +71,7 @@ public class GildedRoseTest {
 
   @Test
   public void quality_of_item_should_have_max_value_50_and_min_value_0(){
-    Item a = new Item("Aged Brie", 2, 10);
+    Item a = new Item(AGED_BRIE, 2, 10);
     Item b = new Item("B", 2, 10);
     GildedRose rose = new GildedRose(new Item[]{a, b});
 
@@ -82,7 +85,7 @@ public class GildedRoseTest {
 
   @Test
   public void sulfuras_will_keep_its_quality_and_sell_in_with_day_passes(){
-    Item a = new Item("Sulfuras", 10, 10);
+    Item a = new Item(SULFURAS, 10, 10);
     GildedRose rose = new GildedRose(new Item[]{a});
 
     for (int i = 0; i < 10; i++) {
@@ -95,7 +98,7 @@ public class GildedRoseTest {
 
   @Test
   public void backstage_passes_has_special_rule(){
-    Item a = new Item("Backstage passes", 11, 30);
+    Item a = new Item(BACKSTAGE_PASSES, 11, 30);
     GildedRose rose = new GildedRose(new Item[]{a});
 
     //increase 1 every day
