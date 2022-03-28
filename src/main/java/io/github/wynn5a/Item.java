@@ -17,20 +17,20 @@ public class Item {
     this.quality = quality;
   }
 
-  public boolean is(String name) {
-    return this.name.equals(name);
-  }
-
   @Override
   public String toString() {
     return "[" + this.name + ", " + this.sellIn + ", " + this.quality + "]";
   }
 
   public void decreaseQuality(int value) {
-    if (quality <= 0 || is(SULFURAS)) {
+    if (quality <= 0 || isSulfuras()) {
       return;
     }
     quality = quality - value;
+  }
+
+  private boolean isSulfuras() {
+    return SULFURAS.equals(this.name);
   }
 
   public void increaseQuality(int value) {
@@ -40,9 +40,17 @@ public class Item {
   }
 
   public void decreaseSellIn(int value) {
-    if (is(SULFURAS)) {
+    if (isSulfuras()) {
       return;
     }
     sellIn = sellIn - value;
+  }
+
+  public boolean isBackstagePasses() {
+    return BACKSTAGE_PASSES.equals(name);
+  }
+
+  public boolean isAgedBrie() {
+    return name.equals(AGED_BRIE);
   }
 }
